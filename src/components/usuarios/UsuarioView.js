@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { getUsuarios } from "../../services/usuarioService";
 import { UsuarioNew } from "./UsuarioNew";
 import { Link } from "react-router-dom";
-// import { UsuarioNew } from "./UsuarioNew.js";
  import Swal from "sweetalert2";
 
 export const UsuarioView = () => {
