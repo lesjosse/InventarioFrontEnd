@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { crearMarca, getMarcas } from "../../services/marcaService";
 import Swal from "sweetalert2";
 
-export const MarcaNew = ( {listarMarcas} ) => {
+export const MarcaNew = ({ listarMarcas }) => {
   const [marcas, setMarcas] = useState([]);
   const [valoresForm, setValoresForm] = useState({});
   const { name = "", status = "" } = valoresForm;
@@ -51,12 +51,11 @@ export const MarcaNew = ( {listarMarcas} ) => {
       } else {
         mensaje = "Ocurrió un error, por favor intente de nuevo";
       }
-      Swal.fire(
-        {
-          icon: 'error',
-          title: 'Oops...',
-          text: mensaje,
-        });
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: mensaje,
+      });
     }
   };
 
@@ -96,7 +95,7 @@ export const MarcaNew = ( {listarMarcas} ) => {
                   required
                 >
                   <option key="">--SELECCIONE--</option>
-                  <option >Activo</option>
+                  <option>Activo</option>
                   <option>Inactivo</option>
                 </select>
               </div>

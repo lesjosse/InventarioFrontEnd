@@ -50,7 +50,7 @@ export const EstadoView = () => {
           {estados.map((estado) => {
             return (
               <tr key={estado._id}>
-                <th scope="row"></th>
+                <th scope="row">#</th>
                 <td>{estado.name}</td>
                 <td>{estado.status} </td>
                 <td>{estado.creationDate} </td>

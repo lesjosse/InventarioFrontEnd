@@ -49,7 +49,7 @@ export const UsuarioView = () => {
           {usuarios.map((usuario) => {
             return (
               <tr key={usuario._id}>
-                <th scope="row"></th>
+                <th scope="row">#</th>
                 <td>{usuario.name}</td>
                 <td>{usuario.email}</td>
                 <td>{usuario.status} </td>
