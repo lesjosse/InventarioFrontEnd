@@ -35,7 +35,7 @@ export const EstadoView = () => {
   return (
     <div className="container">
       <EstadoNew listarEstados={listarEstados} />
-      <table className="table mt-3 mb-2 table-bordered border-primary">
+      <table className="table mt-3 mb-2 table-bordered border-primary ">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -43,34 +43,30 @@ export const EstadoView = () => {
             <th scope="col">Estado</th>
             <th scope="col">Fecha creación</th>
             <th scope="col">Fecha actualización</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
+        <tbody>
+          {estados.map((estado) => {
+            return (
+              <tr key={estado._id}>
+                <th scope="row"></th>
+                <td>{estado.name}</td>
+                <td>{estado.status} </td>
+                <td>{estado.creationDate} </td>
+                <td>{estado.updateDate} </td>
+                <td className="text-center">
+                  <Link to={`estados/edit/${estado._id}`}>
+                    <button type="button" className="btn btn-info">
+                      Edit
+                    </button>
+                  </Link>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
-
-      {estados.map((estado) => {
-        return (
-          <div className="table-responsive" key={estado._id}>
-            <table className="table align-middle alin-row-col">
-              <tbody>
-                <tr>
-                  <th scope="row">#</th>
-                  <td>{estado.name}</td>
-                  <td>{estado.status} </td>
-                  <td>{estado.creationDate} </td>
-                  <td>
-                    {estado.updateDate}{" "}
-                    <Link to={`estados/edit/${estado._id}`}>
-                      <button type="button" className="btn btn-info">
-                        Edit
-                      </button>
-                    </Link>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        );
-      })}
     </div>
   );
 };

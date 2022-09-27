@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getMarcaPorId,  actualizarMarca, getMarcas } from "../../services/marcaService";
+import {
+  getMarcaPorId,
+  actualizarMarca,
+  getMarcas,
+} from "../../services/marcaService";
 import Swal from "sweetalert2";
 
 export const MarcaUpdate = () => {
@@ -56,7 +60,7 @@ export const MarcaUpdate = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const marca = {
-      name, 
+      name,
       status,
     };
     console.log(marca);
@@ -67,7 +71,16 @@ export const MarcaUpdate = () => {
       });
       Swal.showLoading();
       const { data } = await actualizarMarca(marcaId, marca);
-      console.log(data);
+      Swal.fire({
+        title: "Marca actualizada",
+        text: "Actulización correctamente",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      }).then((resutl) => {
+        if (resutl.isConfirmed) {
+          window.location.href = "/marcas";
+        }
+      });
       Swal.close();
     } catch (e) {
       console.log(e);
@@ -79,7 +92,11 @@ export const MarcaUpdate = () => {
       } else {
         mensaje = "Ocurrió un error, por favor intente de nuevo";
       }
-      Swal.fire("Error", mensaje, "error");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: mensaje,
+      });
     }
   };
 

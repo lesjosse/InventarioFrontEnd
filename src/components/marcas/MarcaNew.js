@@ -51,7 +51,12 @@ export const MarcaNew = ( {listarMarcas} ) => {
       } else {
         mensaje = "Ocurrió un error, por favor intente de nuevo";
       }
-      Swal.fire("Error", mensaje, "error");
+      Swal.fire(
+        {
+          icon: 'error',
+          title: 'Oops...',
+          text: mensaje,
+        });
     }
   };
 

@@ -38,37 +38,40 @@ export const TipoView = () => {
 
   return (
     <div className="container">
-      <TipoNew listarTipos={listarTipos}/>
+      <TipoNew listarTipos={listarTipos} />
       <table className="table mt-3 mb-2 table-bordered border-primary ">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Nombre</th>
+            <th scope="col">Tipo equipo</th>
             <th scope="col">Estado</th>
             <th scope="col">Fecha creación</th>
             <th scope="col">Fecha actualización</th>
+            <th scope="col">Acciones</th>
+
           </tr>
         </thead>
-      </table>
-
-      {tipos.map((tipo) => {
-        return (
-          <div className="table-responsive " key={tipo._id}>
-            <table className="table align-middle">
-            <tbody> 
-              <tr>
-                <th scope="row">#</th>
+        <tbody>
+          {tipos.map((tipo) => {
+            return (
+              <tr key={tipo._id}>
+                <th scope="row"></th>
                 <td>{tipo.name}</td>
                 <td>{tipo.status} </td>
                 <td>{tipo.creationDate} </td>
-                <td>{tipo.updateDate} <Link to={`tipos/edit/${tipo._id}`}><button type="button" className="btn btn-info">Edit</button></Link></td>
+                <td>{tipo.updateDate} </td>
+                <td className="text-center">
+                  <Link to={`tipos/edit/${tipo._id}`}>
+                    <button type="button" className="btn btn-info">
+                      Edit
+                    </button>
+                  </Link>
+                </td>
               </tr>
-            </tbody>
-          </table>
-          </div>
-        );
-      })}
-      
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };

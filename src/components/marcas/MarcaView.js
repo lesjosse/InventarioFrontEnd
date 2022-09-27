@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 import { getMarcas } from "../../services/marcaService";
 import { MarcaNew } from "./MarcaNew";
 import { Link } from "react-router-dom";
- import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 export const MarcaView = () => {
-
   const [marcas, setMarcas] = useState([]);
   // const [openModal, setOpenModal] = useState(false);
 
@@ -20,10 +19,10 @@ export const MarcaView = () => {
       const { data } = await getMarcas();
       console.log(data);
       setMarcas(data);
-       Swal.close()
+      Swal.close();
     } catch (e) {
       console.log(e);
-       Swal.close()
+      Swal.close();
     }
   };
   //listar inventario solo se llama una vez cuando cargue el componente
@@ -31,13 +30,9 @@ export const MarcaView = () => {
     listarMarcas();
   }, []);
 
-  // const handleOpenModal = () => {
-  //   setOpenModal(!openModal);
-  // };
-
   return (
     <div className="container">
-      <MarcaNew listarMarcas={listarMarcas}/>
+      <MarcaNew listarMarcas={listarMarcas} />
       <table className="table mt-3 mb-2 table-bordered border-primary ">
         <thead>
           <tr>
@@ -46,28 +41,30 @@ export const MarcaView = () => {
             <th scope="col">Estado</th>
             <th scope="col">Fecha creación</th>
             <th scope="col">Fecha actualización</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
-      </table>
-
-      {marcas.map((marca) => {
-        return (
-          <div className="table-responsive " key={marca._id}>
-            <table className="table align-middle">
-            <tbody> 
-              <tr>
-                <th scope="row">#</th>
+        <tbody>
+          {marcas.map((marca) => {
+            return (
+              <tr key={marca._id}>
+                <th scope="row"></th>
                 <td>{marca.name}</td>
                 <td>{marca.status} </td>
                 <td>{marca.creationDate} </td>
-                <td>{marca.updateDate} <Link to={`marcas/edit/${marca._id}`}><button type="button" className="btn btn-info">Edit</button></Link></td>
+                <td>{marca.updateDate} </td>
+                <td>
+                  <Link to={`marcas/edit/${marca._id}`}>
+                    <button type="button" className="btn btn-info">
+                      Edit
+                    </button>
+                  </Link>
+                </td>
               </tr>
-            </tbody>
-          </table>
-          </div>
-        );
-      })}
-      
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
