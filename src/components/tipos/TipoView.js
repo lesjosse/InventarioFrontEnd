@@ -52,10 +52,10 @@ export const TipoView = () => {
           </tr>
         </thead>
         <tbody>
-          {tipos.map((tipo) => {
+          {tipos.map((tipo, num) => {
             return (
               <tr key={tipo._id}>
-                <th scope="row">#</th>
+                <th scope="row">{num + 1}</th>
                 <td>{tipo.name}</td>
                 <td>{tipo.status} </td>
                 <td>{tipo.creationDate} </td>

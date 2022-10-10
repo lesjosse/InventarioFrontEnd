@@ -45,10 +45,10 @@ export const MarcaView = () => {
           </tr>
         </thead>
         <tbody>
-          {marcas.map((marca) => {
+          {marcas.map((marca, num) => {
             return (
               <tr key={marca._id}>
-                <th scope="row">#</th>
+                <th scope="row">{num + 1}</th>
                 <td>{marca.name}</td>
                 <td>{marca.status} </td>
                 <td>{marca.creationDate} </td>

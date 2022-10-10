@@ -46,10 +46,10 @@ export const UsuarioView = () => {
           </tr>
         </thead>
         <tbody>
-          {usuarios.map((usuario) => {
+          {usuarios.map((usuario, num) => {
             return (
               <tr key={usuario._id}>
-                <th scope="row">#</th>
+                <th scope="row">{num + 1}</th>
                 <td>{usuario.name}</td>
                 <td>{usuario.email}</td>
                 <td>{usuario.status} </td>
