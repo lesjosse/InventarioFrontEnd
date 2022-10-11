@@ -55,7 +55,7 @@ export const TipoView = () => {
           {tipos.map((tipo, num) => {
             return (
               <tr key={tipo._id}>
-                <th scope="row">{num + 1}</th>
+                <td>{num + 1}</td>
                 <td>{tipo.name}</td>
                 <td>{tipo.status} </td>
                 <td>{tipo.creationDate} </td>
